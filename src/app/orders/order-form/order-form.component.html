@@ -1,0 +1,52 @@
+<toaster-container></toaster-container>
+<div class="order-form">
+  <h1>Order Form</h1>
+  <form [formGroup]="orderForm" novalidate (ngSubmit)="onSubmit()">
+    <div *ngIf="type.invalid && (type.dirty || isSubmitted)" class="text-danger">
+      <div *ngIf="type.errors.required">
+        Type is required.
+      </div>
+    </div>
+    <div class="form-group">
+      <select class="form-control" formControlName="type">
+        <option value="">Please select a type</option>
+        <option *ngFor="let type of types"
+                [value]="type">{{type}}</option>
+      </select>
+    </div>
+    <div *ngIf="pair.invalid && (pair.dirty || isSubmitted)" class="text-danger">
+      <div *ngIf="pair.errors.required">
+        Pair is required.
+      </div>
+    </div>
+    <div class="form-group">
+      <select class="form-control" formControlName="pair">
+        <option value="">Please select a pair</option>
+        <option *ngFor="let pair of symbols"
+                [value]="pair">{{pair | uppercase}}</option>
+      </select>
+    </div>
+    <div *ngIf="count.invalid && (count.dirty || isSubmitted)" class="text-danger">
+      <div *ngIf="count.errors.required">
+        Count is required.
+      </div>
+    </div>
+    <div class="form-group">
+      <input type="number" class="form-control" formControlName="count" placeholder="Count">
+    </div>
+    <div *ngIf="price.invalid && (price.dirty || isSubmitted)" class="text-danger">
+      <div *ngIf="price.errors.required">
+        Price is required.
+      </div>
+    </div>
+    <div class="form-group">
+      <input type="number" class="form-control" formControlName="price" placeholder="Price">
+    </div>
+    <div *ngIf="badPrice && bestPrice">
+      <p>Low price: {{badPrice}} </p>
+      <p style="font-weight: bold">Best price: {{bestPrice}} </p>
+    </div>
+    <button type="submit" class="btn btn-primary btn-block">Submit</button>
+    <button type="reset" class="btn btn-secondary btn-block">Reset</button>
+  </form>
+</div>

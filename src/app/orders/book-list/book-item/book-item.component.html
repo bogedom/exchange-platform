@@ -1,0 +1,39 @@
+<div class="row">
+  <div class="col-6">
+    <h2>Bids</h2>
+    <table class="table" *ngIf="book">
+      <thead>
+      <tr>
+        <th scope="col">Price</th>
+        <th scope="col">Amount</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let bid of book.bids">
+        <td>{{bid.price}}</td>
+        <td>{{bid.amount}}</td>
+      </tr>
+      </tbody>
+    </table>
+    <h3 *ngIf="!book">waiting for data...</h3>
+  </div>
+  <div class="col-6">
+    <h2>Asks</h2>
+    <table class="table" *ngIf="book">
+      <thead>
+      <tr>
+        <th scope="col">Price</th>
+        <th scope="col">Amount</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let ask of book.asks">
+        <td>{{ask.price}}</td>
+        <td>{{ask.amount}}</td>
+      </tr>
+      </tbody>
+    </table>
+    <h3 *ngIf="!book">waiting for data...</h3>
+  </div>
+</div>
+
